@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-image: url("/images/background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+
+        .result-list { /* Added for styling search results */
+            margin: auto;
+            width: 60%;
+            color: white;
+        }
+
+        .no-results { /* Added for "Not found" styling */
+            text-align: center;
+            color: red;
+        }
+
+        a { /* Added styling for clickable links */
+            color: lightblue;
+            text-decoration: none;
+        }
+
+        a:hover { /* Added hover effect for links */
+            text-decoration: underline;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Search Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <h1>Search Results</h1>
+
+    <% if (results.length > 0) { %> <!-- Added conditional for handling results -->
+        <div class="result-list"> <!-- Added div for styling search results -->
+            <ul class="list-group">
+                <% results.forEach(destination => { %> <!-- Loop through search results -->
+                    <li class="list-group-item bg-dark"> <!-- Styled each result -->
+                        <a href="/<%= destination.toLowerCase().replace(/ /g, '') %>"> <!-- Generated dynamic link -->
+                            <%= destination %> <!-- Displayed the destination name -->
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } else { %>
+        <p class="no-results">Not found</p> <!-- Added "Not found" message -->
+    <% } %>
+</body>
+</html>
