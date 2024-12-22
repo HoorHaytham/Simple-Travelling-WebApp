@@ -51,7 +51,7 @@ The objective of the project is to build a local **client-server web application
 2. Install dependencies.
 3. Start MongoDB: Ensure MongoDB is running on your system (use MongoDB Compass or the MongoDB shell).
 4. Start the server.
-5. Access the web app: Open your browser and go to http://localhost:3003 to use the website.
+5. Access the web app: Open your browser and go to http://localhost:3003
    
 
 
